@@ -15,11 +15,11 @@ def index():
   else:
     app.vars['stock'] = request.form['stock']    
     app.vars['key'] = request.form['key']
-    success, comments = quandl.stock_plot(app.vars['stock'], app.vars['key'])
+    success = quandl.stock_plot(app.vars['stock'], app.vars['key'])
     if success:
       return render_template('stocks.html')
     else:
-      return '%s' % comments
+      return render_template('error.html')
     
 if __name__ == '__main__':
   app.run(debug=True)

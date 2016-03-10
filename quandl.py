@@ -10,15 +10,15 @@ def stock_plot(stock, key):
     try:
         json_data = requests.get(api_url)
     except:
-        return False, "Stock Name is not correct."
+        return False
 
-    #print json_data.json()['dataset']['column_names']
+    print json_data.json()['dataset']['column_names']
     data_list =  zip(*json_data.json()['dataset']['data'])
     key_calls = [x.encode('UTF8') for x in json_data.json()['dataset']['column_names']]
     try :
         index = key_calls.index(key)
     except :
-        return False, "Data Key is not correct."
+        return False
 
     date = np.array(list(data_list[0]), dtype=np.datetime64)
     in_data = np.asarray(data_list[index])
@@ -32,7 +32,7 @@ def stock_plot(stock, key):
     p.line(date, in_data, line_color='blue', line_width=2, legend='%s' % stock)
     output_file("templates/stocks.html", title="Quandl")
     save(p)  # open a browser
-    return True,"Good Job"
+    return True
 
 
 if __name__=="__main__":    
