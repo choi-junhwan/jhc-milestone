@@ -2,14 +2,28 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Hello, World!</title>
+		<title>Quandl Stock Price</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+		<link rel=stylesheet type=text/css href='{{ url_for('static',filename='style.css')}}'>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	</head>
 	<body>
 		<div>
-  			<h1>Hello, World!</h1>
+  		  <h1>User Input</h1>
+		  <h2>Please enter a stock ticker eg. GOOG, and check desired features.</h2>
+		  <form id='userinfoform_lulu' method='post' action='index' >
+		    <p>
+		      Ticker symbol: <input type='text' name='stock' />
+		    </p>
+		    <p>
+		      Data Key: <input type='text' name='key' />
+		    </p>
+		    <p>
+		      <input type='submit' value='Submit' />
+		    </p>
+		  </form>
+		  
 		</div>
 	</body>
 </html>
