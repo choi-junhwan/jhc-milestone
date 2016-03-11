@@ -1,3 +1,6 @@
+#This is Junhwan Choi's Data Incubator Milestone project.
+based on flask-demo from https://github.com/thedataincubator/flask-demo
+
 # Flask on Heroku
 
 This project is intended to help you tie together some important concepts and
