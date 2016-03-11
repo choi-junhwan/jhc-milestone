@@ -7,18 +7,13 @@ from bokeh.plotting import figure, show, save, output_file, vplot
 def stock_plot(stock, key):
     MyAPIKey = "95ujF6cdywLzzj9uPSeS"
     api_url = 'https://www.quandl.com/api/v3/datasets/WIKI/%s.json?api_key=%s' % (stock, MyAPIKey)
-    try:
-        json_data = requests.get(api_url)
+    json_data = requests.get(api_url)
+    try:     # Check the dataset
+        data_list =  zip(*json_data.json()['dataset']['data'])
     except:
         return False
-
-    print json_data.json()['dataset']['column_names']
-    data_list =  zip(*json_data.json()['dataset']['data'])
     key_calls = [x.encode('UTF8') for x in json_data.json()['dataset']['column_names']]
-    try :
-        index = key_calls.index(key)
-    except :
-        return False
+    index = key_calls.index(key)
 
     date = np.array(list(data_list[0]), dtype=np.datetime64)
     in_data = np.asarray(data_list[index])
